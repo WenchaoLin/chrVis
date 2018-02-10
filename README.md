@@ -1,7 +1,28 @@
 # chrVis
 Visualize genes on chromesome
 
+## Requirements
+
+The script requires python module : svgwrite
+
+install with pip:
+
+```
+pip install svgwrite`
+```
+
+or from source:
+
+```
+python setup.py install
+```
+
+## sample command line
+
+`python main.py sample_chr.txt sample_gene.txt -o sample_output.svg -wi 400px -hi 600px`
+
 ## Usage
+
 
 ```
 usage: main.py [-h] [-o OUTPUT] [-wi WIDTH] [-hi HEIGHT] [-f FONTSIZE]

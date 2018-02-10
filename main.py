@@ -14,7 +14,7 @@ def draw(filename):
     '''主程序入库
     '''
 
-    svg = Drawing(filename=filename, debug=True)
+    svg = Drawing(filename=filename, size=(args.width,args.height),debug=True)
 
 
     chrs = read_chr(args.chr)
@@ -48,12 +48,10 @@ if __name__ == '__main__':
     parser.add_argument('chr', help='chr file')
     parser.add_argument('gene', help='gene file')
     parser.add_argument('-o','--output',type =str , default = None,help='output filename')
-    parser.add_argument('-x', '--xcoordinate', type=int,
-                        default=0, help='x coordinate position')
-    parser.add_argument('-y', '--ycoordinate', type=int,
-                        default=50, help='y coordinate position')
-    parser.add_argument('-r', '--radius', type=int,
-                        default=10, help='the best range is 10 to 20')
+    parser.add_argument('-wi', '--width', type=str,
+                        default='400px', help='width of the image')
+    parser.add_argument('-hi', '--height', type=str,
+                        default='600px', help='height of the image')
     parser.add_argument('-f', '--fontsize', default='8', help='font size')
     args = parser.parse_args()
     if args.chr is None:

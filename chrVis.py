@@ -82,17 +82,17 @@ class vectorChr:
                 # Draw gene band
 
                 p = svg.rect(insert=(x-10+1, y1 + self.margin ), size=(20-2, self.margin+y2),
-                        fill=i[4], stroke='black', stroke_width=0)
+                        fill=i[4], stroke='black', stroke_width=0,opacity=0.5)
 
                 # Draw gene annotation
 
                 offset = 5
 
-                mark = svg.polyline(points=[(x+15,y1+self.margin + offset),(x+25,y1+self.margin + offset),
-                                            (x+35,y1+self.margin + offset - 20),(x+45,y1+self.margin + offset - 20),]
+                mark = svg.polyline(points=[(x+15,y1+self.margin + offset),(x+20,y1+self.margin + offset),
+                                            (x+25,y1+self.margin + offset - 10),(x+30,y1+self.margin + offset - 10),]
                                     ,stroke='blue',fill="none")
 
-                ann = svg.text(i[1],insert=(x+50,y1+self.margin + offset - 20),stroke_width=0,fill="black",font_size=13)
+                ann = svg.text(i[1],insert=(x+35,y1+self.margin + offset - 10),stroke_width=0,fill="black",font_size=13)
 
                 thisGroup.add(mark)
                 thisGroup.add(ann)

@@ -14,7 +14,7 @@ def draw(filename):
     """
     main
     """
-    
+
     svg = Drawing(filename=filename, size=(args.width,args.height),debug=True)
 
 

@@ -1,5 +1,5 @@
 # chrVis
-Visualize genes on chromesome
+Visualize genes or LinkageMap on chromesomes
 
 ## Requirements
 

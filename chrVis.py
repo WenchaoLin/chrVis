@@ -53,76 +53,90 @@ class vectorChr:
 
     def get_svg(self):
 
-    	svg = self.svg
-    	svgGroup = self.get_groupElement()
+        svg = self.svg
+        svgGroup = self.get_groupElement()
 
-    	thisGroup = svg.add(svgGroup)
-
-
-
-    	x = 100*self.chrcount
-    	y = int(self.chrValue['length']) / int(self.scalefactor)
-
-    	# print "y:" + str(y)
-
-
-    	chrBackbone = self.get_chrBackbone(x,y,self.margin,color = self.chrValue["color"])
-    	chrTitle = self.get_chrTitle(x,30,self.titleSize)
-
-    	thisGroup.add(chrBackbone)
-    	thisGroup.add(chrTitle)
-
-    	if self.bands:
-    		for n, i in enumerate(self.bands):
-    			y = int(i[2]) / self.scalefactor
+        thisGroup = svg.add(svgGroup)
 
 
 
-    			# Draw gene band
+        x = 100*self.chrcount
+        y = int(self.chrValue['length']) / int(self.scalefactor)
 
-    			p = svg.rect(insert=(x-10, y + self.margin ), size=(20, 5),
-                        fill=i[3], stroke='black', stroke_width=0)
-
-    			# Draw gene annotation
-
-    			offset = 5
-    			ann = svg.text(i[1],insert=(x+15,y+self.margin+ offset),stroke_width=0,fill="black",font_size=13)
-
-    			thisGroup.add(ann)
-    			thisGroup.add(p)
+        # print "y:" + str(y)
 
 
-    	return thisGroup
+        chrBackbone = self.get_chrBackbone(x,y,self.margin,color = self.chrValue["color"])
+        chrTitle = self.get_chrTitle(x,30,self.titleSize)
+
+        thisGroup.add(chrBackbone)
+        thisGroup.add(chrTitle)
+
+        if self.bands:
+            for n, i in enumerate(self.bands):
+                y1 = int(i[2]) / self.scalefactor
+                y2 = int(i[3]) / self.scalefactor
+
+
+
+                # Draw gene band
+
+                p = svg.rect(insert=(x-10+1, y1 + self.margin ), size=(20-2, self.margin+y2),
+                        fill=i[4], stroke='black', stroke_width=0)
+
+                # Draw gene annotation
+
+                offset = 5
+
+                mark = svg.polyline(points=[(x+15,y1+self.margin + offset),(x+25,y1+self.margin + offset),
+                                            (x+35,y1+self.margin + offset - 20),(x+45,y1+self.margin + offset - 20),]
+                                    ,stroke='blue',fill="none")
+
+                ann = svg.text(i[1],insert=(x+50,y1+self.margin + offset - 20),stroke_width=0,fill="black",font_size=13)
+
+                thisGroup.add(mark)
+                thisGroup.add(ann)
+                thisGroup.add(p)
+
+        thisGroup.add(chrBackbone)
+
+
+        return thisGroup
 
 
 
     def get_chrBackbone(self,x,y,margin = 30, color='black'):
-    	'''
-    	返回染色体的染色体框架
-    	'''
+        '''
+        返回染色体的染色体框架
+        '''
 
-    	v = self.svg.line(start=(x,margin),end=(x,y+margin),stroke=color,stroke_width="3px")
+        #线型
+        v = self.svg.line(start=(x,margin),end=(x,y+margin),stroke=color,stroke_width="3px")
 
-    	return v
+        #rect
+        v = self.svg.rect(insert=(x-10,margin), size=(20, y + margin), fill="none",stroke=color,
+                          stroke_width="2px",rx="8px",ry="10px")
+
+        return v
 
 
 
-    def get_chrTitle(self, x, y = 25,titleSize=22, color='blue'):
-    	'''
-    	染色体名称
-    	'''
+    def get_chrTitle(self, x, y = 25,titleSize=16, color='blue'):
+        '''
+        染色体名称
+        '''
 
-    	v = self.svg.text(self.chrName,insert=(x - 15,y),stroke_width=0,fill="black",font_size=titleSize)
-    	return v
+        v = self.svg.text(self.chrName,insert=(x - 15 ,y),stroke_width=0,fill="black",font_size=titleSize)
+        return v
 
 
 
     def get_chrBands(self):
-    	'''
-    	标注染色体上的基因
-    	'''
+        '''
+        标注染色体上的基因
+        '''
 
-    	pass
+        pass
 
 
 
@@ -132,7 +146,7 @@ class vectorChr:
 def read_chr(handle):
     '''
     读取染色体长度文件，格式为：
-    chrName	length	#FFF(颜色代码)
+    chrName    length    #FFF(颜色代码)
      '''
     d = OrderedDict()
 
@@ -147,41 +161,41 @@ def read_chr(handle):
 
 
 def read_cds(handle):
-	'''
-	读取染色体上基因信息文件，格式为：
-    chrName	geneName	pos	#FFF(颜色代码)
+    '''
+    读取染色体上基因信息文件，格式为：
+    chrName    geneName    pos    #FFF(颜色代码)
     '''
 
 
-	d = {}
+    d = {}
 
-	with open(handle) as f:
-		rows = [x.strip().split() for x in f]
-		rows.sort(key=itemgetter(0))
-		groups = groupby(rows, lambda x: x[0])
-		for k,v in groups:
-			d[k] = list(v)
+    with open(handle) as f:
+        rows = [x.strip().split() for x in f]
+        rows.sort(key=itemgetter(0))
+        groups = groupby(rows, lambda x: x[0])
+        for k,v in groups:
+            d[k] = list(v)
 
-	return d
+    return d
 
 
 
 
 
 def getScaleFactor(chrdict):
-	'''
-	计算染色体缩放的参数
-	'''
-	count = 0
-	totalLength = 0
+    '''
+    计算染色体缩放的参数
+    '''
+    count = 0
+    totalLength = 0
 
-	for k, v in chrdict.items():
-		count += 1
-		totalLength += int(v['length'])
+    for k, v in chrdict.items():
+        count += 1
+        totalLength += int(v['length'])
 
-	scale = totalLength / count / int(400)
+    scale = totalLength / count / int(400)
 
-	return scale
+    return scale
 
 
 

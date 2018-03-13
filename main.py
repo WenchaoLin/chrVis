@@ -11,9 +11,10 @@ import argparse
 
 
 def draw(filename):
-    '''主程序入库
-    '''
-
+    """
+    main
+    """
+    
     svg = Drawing(filename=filename, size=(args.width,args.height),debug=True)
 
 
@@ -27,11 +28,10 @@ def draw(filename):
         else:
             gene = []
 
-        
-        svgGroup = vectorChr(chrName,chrValue,gene,scalefactor)
-        svgGroup.set_titleSize(22)
+        svggroup = vectorChr(chrName,chrValue,gene,scalefactor)
+        svggroup.set_titleSize(16)
 
-        e = svgGroup.get_svg()
+        e = svggroup.get_svg()
 
         this = svg.add(e)
     if filename:
@@ -52,7 +52,7 @@ if __name__ == '__main__':
                         default='400px', help='width of the image')
     parser.add_argument('-hi', '--height', type=str,
                         default='600px', help='height of the image')
-    parser.add_argument('-f', '--fontsize', default='8', help='font size')
+    parser.add_argument('-f', '--fontsize', default='6', help='font size')
     args = parser.parse_args()
     if args.chr is None:
         parser.print_help()

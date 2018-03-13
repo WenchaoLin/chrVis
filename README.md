@@ -59,14 +59,21 @@ chr3    1900000 #333300
 
 ## sample gene file
 
-Four columns `chromesome name` , `gene name`,`gene position`, `color`
+Five columns `chromesome name` , `gene name`,`gene position`,`size`, `color`
 
 ```
-chr1	gene1	1000	#666666
-chr2	gene2	100030	#99CC00
-chr1	gene3	400000	#0066CC
-chr1	gene4	50400	#99CC66
-chr1	gene5	600000	#003366
+yu1	block0	18655440	349111	#bacac6
+yu4	block63	21300577	380675	#bacac6
+yu4	block64	19835040	1299089	#bacac6
+yu4	block65	24342697	743709	#00bc12
+yu5	block73	15698017	1530347	#00bc12
+yu5	block74	19286756	774087	#00bc12
+yu5	block75	14726663	789333	#00bc12
+yu5	block76	18302344	937674	#00bc12
+yu5	block77	20273832	661715	#00bc12
+yu10	block11	7776987	391879	#0eb83a
+yu10	block12	8618148	1295415	#0eb83a
+yu10	block13	6995751	761896	#0eb83a
 ```
 
 ## sample output

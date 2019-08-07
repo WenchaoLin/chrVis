@@ -81,7 +81,7 @@ class vectorChr:
 
                 # Draw gene band
 
-                p = svg.rect(insert=(x-10+1, y1 + self.margin ), size=(20-2, self.margin+y2),
+                p = svg.rect(insert=(x-10+1, y1 + self.margin ), size=(20-2, y2),
                         fill=i[4], stroke='black', stroke_width=0,opacity=0.5)
 
                 # Draw gene annotation

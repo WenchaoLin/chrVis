@@ -6,6 +6,15 @@ chrVis is a chromosome visualization tool, aims to facilitate the identification
 ## TODO
 
 
+- Image auto Size
+- Legend support
+- Block name auto arrangement
+- Symbols or glyph mark support
+- Links between chromosomes
+- Tutorials and Samples
+
+
+
 ## Requirements
 
 The script requires python module : svgwrite

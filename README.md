@@ -1,5 +1,19 @@
-# chrVis
-Visualize genes or LinkageMap on chromesomes
+# About chrVis
+
+chrVis is a chromosome visualization tool, aims to facilitate the identification and analysis of linkage blocks, chromosome structure and differences from comparisons of chromosomes. Our tool is effective in displaying variation in chromosome structure and, generally, any other kind of positional blocks on the chromosome intervals. 
+
+
+## TODO
+
+
+- Image auto Size
+- Legend support
+- Block name auto arrangement
+- Symbols or glyph mark support
+- Links between chromosomes
+- Tutorials and Samples
+
+
 
 ## Requirements
 
@@ -9,12 +23,6 @@ install with pip:
 
 ```
 pip install svgwrite`
-```
-
-or from source:
-
-```
-python setup.py install
 ```
 
 ## sample command line

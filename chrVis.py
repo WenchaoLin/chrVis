@@ -19,6 +19,8 @@ logger = logging.getLogger(__name__)
 def main(args):
     cf = configparser.ConfigParser()
     cf.read(args.conf)
+    outputFile = args.output
+
 
     karyotypeFile = cf.get('general','karyotype')
     bandFile = cf.get('general','bandfile')
@@ -76,6 +78,7 @@ def main(args):
 
 
     p = svg.tostring()
+
     print(p)
 
 
@@ -85,7 +88,7 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser(description="")
     parser.add_argument('-c', '--conf', type=str,default = None, help='configure file')
-    parser.add_argument('-o','--out',type =str , default = None, help='output filename')
+    parser.add_argument('-o','--output',type =str , default = None, help='output filename')
     args = parser.parse_args()
     if args.conf is None:
         parser.print_help()

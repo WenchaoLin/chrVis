@@ -1,4 +1,4 @@
-#About chrVis
+# About chrVis
 
 chrVis is a chromosome visualization tool, aims to facilitate the identification and analysis of linkage blocks, chromosome structure and differences from comparisons of chromosomes. Our tool is effective in displaying variation in chromosome structure and, generally, any other kind of positional blocks on the chromosome intervals. 
 
@@ -111,4 +111,4 @@ chr9  block98 12392176  13083726  #f35336
 
 ## sample output
 
-![sample output](./sample_output.svg)
+![sample output](./sample_out.svg)

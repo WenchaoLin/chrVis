@@ -112,4 +112,4 @@ chr9  block98 12392176  13083726  #f35336
 
 ## sample output
 
-![sample output](./sample_output.svg)
+![sample output](./sample_out.svg)

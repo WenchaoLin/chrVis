@@ -64,7 +64,7 @@ class VectorChr:
 
 
 
-    def get_svg(self):
+    def getCode(self):
 
         svg = self.svg
         svgGroup = self.get_groupElement()
@@ -97,7 +97,7 @@ class VectorChr:
                 # Draw gene band
 
                 p = svg.rect(insert=(x-10+1, startY + self.margin ), size=(self.bandSize-2, endY),
-                        fill=i[4], stroke='black', stroke_width=0,opacity=0.5)
+                        fill=i[4], stroke='black', stroke_width=0,opacity=1)
 
                 # Draw gene annotation
 
@@ -130,7 +130,7 @@ class VectorChr:
         v = self.svg.line(start=(x,margin),end=(x,y+margin),stroke=color,stroke_width="3px")
 
         #rect
-        v = self.svg.rect(insert=(x-10,margin), size=(self.thickness, y), fill="none",stroke=color,stroke_width="2px")
+        v = self.svg.rect(insert=(x-10,margin), size=(self.thickness, y), fill="none",stroke=color,stroke_width="1px")
 
         return v
 
